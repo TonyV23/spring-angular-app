@@ -6,10 +6,12 @@ import com.tony.fullstackapp.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class EmployeeService {
 
     private final EmployeeRepo employeeRepo;
@@ -30,11 +32,6 @@ public class EmployeeService {
 
     public Employee UpdateEmployee(Employee employee) {
         return employeeRepo.save(employee);
-    }
-
-    public Employee DeleteEmployee(Employee employee) {
-        employeeRepo.delete(employee);
-        return employee;
     }
 
     public Employee findEmployeeById(Long id) {
